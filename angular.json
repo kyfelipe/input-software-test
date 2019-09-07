@@ -120,6 +120,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "input-software-test"
+    }
+  },
+  "defaultProject": "input-software-test",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
