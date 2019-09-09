@@ -1,1 +1,33 @@
-<p>stepper works!</p>
+<mat-horizontal-stepper [linear]="false" #stepper>
+    <mat-step>
+        <ng-template matStepLabel>Preencha com um número inteiro positivo</ng-template>
+        <form [formGroup]="firstFormGroup" class="d-flex justify-content-center align-items-center">
+            <mat-form-field>
+                <input matInput placeholder="Número inteiro positivo" formControlName="firstCtrl" appNumber required/>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <!--<form>
+            <ng-template matStepLabel>Fill out your address</ng-template>
+            <mat-form-field>
+                <input matInput placeholder="Address" required/>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>-->
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

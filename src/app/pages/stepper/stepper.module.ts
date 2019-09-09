@@ -1,14 +1,23 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatButtonModule, MatFormFieldModule, MatInputModule, MatStepperModule} from '@angular/material';
+
 import {StepperComponent} from './stepper.component';
 import {StepperRoutingModule} from './stepper-routing.module';
-import {InputIntegerComponent} from './steps/input-integer/input-integer.component';
+import {NumberModule} from '../../shared/directives/number/number.module';
 
 @NgModule({
-    declarations: [StepperComponent, InputIntegerComponent],
+    declarations: [StepperComponent],
     imports: [
         CommonModule,
-        StepperRoutingModule
+        StepperRoutingModule,
+        MatStepperModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        NumberModule
     ],
     exports: [StepperComponent],
 })
