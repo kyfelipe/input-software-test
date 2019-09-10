@@ -1,33 +1,47 @@
-<mat-horizontal-stepper [linear]="false" #stepper>
-    <mat-step>
+<mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="firstFormGroup" [optional]="false">
         <ng-template matStepLabel>Preencha com um número inteiro positivo</ng-template>
         <form [formGroup]="firstFormGroup" class="d-flex justify-content-center align-items-center">
             <mat-form-field>
                 <input matInput placeholder="Número inteiro positivo" formControlName="firstCtrl" appNumber required/>
             </mat-form-field>
             <div>
-                <button mat-button matStepperNext>Next</button>
+                <button (click)="updatePreviousValueFirstCtrl()" [disabled]="!firstFormGroup.valid" color="primary" mat-flat-button matStepperNext>Próximo</button>
             </div>
         </form>
     </mat-step>
-    <mat-step>
-        <!--<form>
-            <ng-template matStepLabel>Fill out your address</ng-template>
-            <mat-form-field>
-                <input matInput placeholder="Address" required/>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+    <mat-step [stepControl]="secondFormGroup" [optional]="false">
+        <ng-template matStepLabel>Cadeia de caracteres</ng-template>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <form [formGroup]="secondFormGroup" class="d-flex justify-content-center align-items-center">
+                <mat-form-field>
+                    <input
+                        matInput
+                        placeholder="Cadeia de caracteres"
+                        formControlName="secondCtrl"
+                        [maxLength]="firstCtrl ? firstCtrl : 1"
+                        required
+                    />
+                </mat-form-field>
+                <div>
+                    <button class="mr-2" color="warn" mat-flat-button matStepperPrevious>Voltar</button>
+                    <button color="primary" [disabled]="secondCtrlIsValid()" mat-flat-button matStepperNext>Próximo</button>
+                </div>
+            </form>
+            <div class="mt-2 d-flex justify-content-center align-items-center">
+                <span class="h4">
+                    Quantidade de caracteres necessário para serem inseridos:
+                </span>
+                <span class="h2">&nbsp;{{amountRequiredNextStep()}}</span>
             </div>
-        </form>-->
+        </div>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         You are now done.
         <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button class="mr-2" color="warn" mat-flat-button matStepperPrevious>Voltar</button>
+            <button color="primary" mat-flat-button (click)="stepper.reset()">Reset</button>
         </div>
     </mat-step>
 </mat-horizontal-stepper>
