@@ -35,6 +35,7 @@ export class StepperComponent implements OnInit {
         if (this.previousValueFirstCtrl !== this.firstCtrl) {
             this.secondFormGroup.reset();
             this.secondFormGroup.get('secondCtrl').clearValidators();
+            this.secondFormGroup.get('secondCtrl').setValidators([Validators.minLength(this.firstCtrl)]);
         }
         this.previousValueFirstCtrl = this.firstCtrl;
     }

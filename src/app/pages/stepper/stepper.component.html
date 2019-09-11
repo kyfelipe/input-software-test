@@ -4,6 +4,7 @@
         <form [formGroup]="firstFormGroup" class="d-flex justify-content-center align-items-center">
             <mat-form-field>
                 <input matInput placeholder="Número inteiro positivo" formControlName="firstCtrl" appNumber required/>
+                <mat-error *ngIf="secondFormGroup.get('secondCtrl').getError('required')">aa</mat-error>
             </mat-form-field>
             <div>
                 <button (click)="updatePreviousValueFirstCtrl()" [disabled]="!firstFormGroup.valid" color="primary" mat-flat-button matStepperNext>Próximo</button>
